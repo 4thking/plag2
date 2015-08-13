@@ -1,0 +1,33 @@
+
+<h1> <%= @test.name %> </h1>
+
+  <br>
+
+<%= form_tag pages_example2_path, :id => "2", :method => :post do %>
+
+ <ol>
+    <% @test.questions.each do |question| %>
+
+     <li><%= h question.content %></li>
+     <br>
+      <% for answer in question.answers %>
+      <ul>
+      <li> <%= radio_button_tag "response[answer_id]", "#{answer.id}" %><%= h answer.content %> </li>
+
+      </ul>
+
+     <% end %>
+     <% end %>
+
+<br>
+
+ 	<div class="field">
+      <%= submit_tag "Submit My Answers" %>
+    </div>
+
+<% end %>
+
+
+
+
+
